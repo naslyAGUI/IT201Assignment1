@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" >
+<style>
+
+	form {
+			width: 30% ;
+			margin: auto;
+			border: 2px solid blue;
+			border-radius: 10px; 
+			padding: 10px;
+		/*	overflow: auto; */
+			position: static;
+			
+			
+			
+			
+		}
+	
+		
+			#warn1 { background-color: red;
+      color:white; }
+			#warn2 { background-color: red;
+      color:white;}
+      #warn3 { background-color: red;
+      color:white;}
+      #warn5 { background-color: red;
+      color:white;}
+      
+      #hide { color:blue;}
+      #outside { background-color: white;}
+
+      body { background-color:#D60270;}
+      #mail { width: 1em;}
+      
+      
+
+</style>
+</head>
+<body>
+<h1 style="font-family:verdana;" align="center"> Welcome </h1>
+<form method="GET" id= "outside" action="insert-user-in-AA.php" onsubmit="return f1()"  >
+
+
+	<input type=text name = "UCID"  id="UCID1" autocomplete="off"  placeholder="Fill UCID" required >UCID<br>
+	<input type=text name = "pass"  id="pass1" autocomplete="off"  placeholder="Fill pass" required >pass<br>
+	<input type=text name = "pass_again"  id="pass_again1" autocomplete="off"  placeholder="Refill pass" required onblur = "f1()" >pass_again
+  <span id="warn3"></span><br>
+	<input type=text name = "name"  id="name1" autocomplete="off"  placeholder="Fill name" required >name<br>
+	<input type=text name = "mail"  id="mail1" autocomplete="off"  placeholder="Fill mail address" required >mail_address<br>
+	<input type=text name = "initial"  autocomplete="off"  placeholder="Fill initial" required >initial<br><br>
+	
+
+	<button type=submit id="hide" autocomplete="off"  placeholder=required>Create New Account</button><br><br>
+
+</form><br>
+
+
+<form method="GET" id = "outside" action="deposit-or-withdraw.php" onsubmit="return f2()"  >
+
+	<input type=text name = "UCID"  id="UCID2" autocomplete="off"  placeholder="Fill UCID" required >UCID
+	<span id="warn1"></span><br>
+	<input type=text name = "pass"  id="pass2" autocomplete="off"  placeholder="Fill pass" required >pass
+	<span id="warn8"></span><br>
+	<input type=number name = "amount"  id="amount2" autocomplete="off"  placeholder=0.00 >amount<br>
+  
+    Service <select name="type" id="type">
+		<option value=>Choose One</option>
+		<option value="D">Deposit</option>
+		<option value="W">Withdraw</option>
+	</select><br>
+	
+
+ <input type = text name="mail" value="N" id = "mail"  > 
+     Mail receipt: No is default. Type Y for Yes<br>
+	 <br>
+
+	<button type=submit id="hide" autocomplete="off"  placeholder=required >Perform Transaction (D or W)</button>
+
+</form><br>
+
+<form method="GET" id= "outside" action="display.php" onsubmit="return f3()"  >
+
+	<input type=text name = "UCID"  id="UCID3" autocomplete="off"  placeholder= "Fill UCID" required >UCID
+  <span id="warn5"></span><br>
+ 	<input type=text name = "pass"  id="pass3" autocomplete="off"  placeholder="Fill pass" required >pass
+  <span id="warn2"></span><br>
+	<input type=number name = "number"  id="number3" autocomplete="off"  placeholder=1 required >number<br><br>
+
+ <input type = text name="mailChoice" value="N" id = "mail"  > 
+     Mail receipt: No is default. Type Y for Yes<br><br>
+	<button type=submit id="hide" autocomplete="off"  placeholder=required >Display Transaction</button><br>
+	
+</form>
+
+<script>
+
+function f1() {
+var ptr = document.getElementById("pass1");
+  var a = ptr.value
+  var ptrX = document.getElementById("pass_again1");
+    var b = ptrX.value
+
+  if(a != b) {
+    warn3.innerHTML="Passwords do not match" }
+  else   {warn3.innerHTML=""}
+  
+  
+     
+}
+
+
+var ptrX = document.getElementById( "UCID2" )	     
+    ptrX.addEventListener ( "blur" , f2 )	
+    
+
+	var warn1 = document.getElementById ( "warn1" )
+
+function f2 ( ) {
+	var w1 = document.getElementById ( "UCID2" ).value.trim();
+ 	if ( w1 == "") { warn1.innerHTML="Please fill in UCID."  } 
+	else           { warn1.innerHTML=""  }
+	if ( w1 == ""  ) {   return false  } else {  return true }
+
+  
+  
+}
+
+
+var ptrX = document.getElementById( "UCID3" )	     
+    ptrX.addEventListener ( "blur" , f3 )	
+    
+
+	var warn5 = document.getElementById ( "warn5" )
+
+function f3 ( ) {
+	var w1 = document.getElementById ( "UCID3" ).value.trim();
+ 	if ( w1 == "") { warn5.innerHTML="Please fill in UCID."  } 
+	else           { warn5.innerHTML=""  }
+	if ( w1 == ""  ) {   return false  } else {  return true }
+
+  
+  
+}
+
+
+
+</script>
+
+
+</body>
+</html>
